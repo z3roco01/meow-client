@@ -8,6 +8,8 @@
 		"z3roco01"
 	],
 	"contact": {
+		"issues": "https://github.com/z3roco01/meow-client/issues",
+		"sources": "https://github.com/z3roco01/meow-client"
 	},
 	"license": "Unlicense",
 	"icon": "assets/meow_client/icon.png",
