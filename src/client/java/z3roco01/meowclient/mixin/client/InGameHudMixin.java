@@ -19,7 +19,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import z3roco01.meowclient.MeowClient;
 
@@ -29,7 +28,6 @@ import java.util.Objects;
 
 @Mixin(InGameHud.class)
 public abstract class InGameHudMixin {
-    @Shadow private int scaledWidth;
 
     @Shadow @Final private static Identifier EFFECT_BACKGROUND_TEXTURE;
 
@@ -50,7 +48,6 @@ public abstract class InGameHudMixin {
         }
         RenderSystem.enableBlend();
         int i = 0;
-        int j = 0;
         StatusEffectSpriteManager statusEffectSpriteManager = client.getStatusEffectSpriteManager();
         ArrayList<Runnable> list = Lists.newArrayListWithExpectedSize(collection.size());
         for (StatusEffectInstance statusEffectInstance : Ordering.natural().reverse().sortedCopy(collection)) {

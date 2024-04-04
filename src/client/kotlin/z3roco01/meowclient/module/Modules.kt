@@ -5,7 +5,6 @@ import z3roco01.meowclient.module.modules.FullBrightModule
 import z3roco01.meowclient.module.modules.LeftStatusEffectsModule
 import z3roco01.meowclient.module.modules.NoToastModule
 import java.util.Optional
-import javax.swing.text.html.Option
 import kotlin.reflect.KClass
 
 class Modules {

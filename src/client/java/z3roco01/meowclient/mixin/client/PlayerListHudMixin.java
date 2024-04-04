@@ -8,19 +8,14 @@ import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.util.ColorCode;
-import net.minecraft.util.Colors;
-import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import z3roco01.meowclient.MeowClient;
-import z3roco01.meowclient.module.modules.BetterHudModule;
 
 @Mixin(PlayerListHud.class)
 public abstract class PlayerListHudMixin {
