@@ -4,7 +4,7 @@ plugins {
   id "org.jetbrains.kotlin.jvm" version "1.9.23"
 }
 
-version = 'v' + project.mod_version + '+' + project.minecraft_version
+version = 'v' + project.mod_version + '+mc' + project.minecraft_version
 group = project.maven_group
 
 base {
