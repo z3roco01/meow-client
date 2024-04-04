@@ -1,0 +1,6 @@
+{
+    "meow_client.module.full_bright": "full_bright",
+    "meow_client.command.toggle.enabled": "is enabled",
+    "meow_client.command.toggle.disabled": "is disabled",
+    "meow_client.command.toggle.no_arg": "Missing module argument"
+}
