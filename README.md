@@ -1,0 +1,2 @@
+# Meow Client
+A simple utility client in EXTREME ALPHA MANY BUGS AND BAD/UNFINISHED FEATURES 
