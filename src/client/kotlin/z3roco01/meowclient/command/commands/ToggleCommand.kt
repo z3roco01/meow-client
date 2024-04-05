@@ -11,12 +11,26 @@ import z3roco01.meowclient.util.TextUtils
 
 class ToggleCommand : Command("toggle") {
     override fun buildCmd(builder: LiteralArgumentBuilder<FabricClientCommandSource>) {
-        builder
-            .executes{context ->
-                context.source.sendError(TextUtils.translate(".command.toggle.no_arg"))
-                0
-            }
-            .then(ClientCommandManager.argument("module", StringArgumentType.word())
+        val bld = builder.executes{context ->
+            context.source.sendError(TextUtils.translate(".command.toggle.no_arg"))
+            0
+        }
+
+        for(module in MeowClient.modules.modules)
+            bld.then(ClientCommandManager.literal(module.name).executes{context ->
+                module.toggle()
+
+                var feedbackKey = ""
+                if(module.isEnabled())
+                    feedbackKey = ".command.toggle.enabled"
+                else
+                    feedbackKey = ".command.toggle.disabled"
+
+                context.source.sendFeedback(Text.literal(module.name + " ").append(TextUtils.translate(feedbackKey)))
+
+                1
+            })
+            /*.then(ClientCommandManager.argument("module", StringArgumentType.word())
                 .executes{context ->
                     val name = StringArgumentType.getString(context, "module")
                     val moduleOpt = MeowClient.modules.getModule(name)
@@ -38,6 +52,6 @@ class ToggleCommand : Command("toggle") {
                     context.source.sendFeedback(Text.literal(module.name + " ").append(TextUtils.translate(feedbackKey)))
 
                    1
-            })
+            })*/
     }
 }

@@ -1,10 +1,7 @@
 package z3roco01.meowclient.module
 
 import z3roco01.meowclient.config.MeowClientConfig
-import z3roco01.meowclient.module.modules.BetterHudModule
-import z3roco01.meowclient.module.modules.FullBrightModule
-import z3roco01.meowclient.module.modules.LeftStatusEffectsModule
-import z3roco01.meowclient.module.modules.NoToastModule
+import z3roco01.meowclient.module.modules.*
 import java.util.Optional
 import kotlin.reflect.KClass
 
@@ -16,6 +13,7 @@ class Modules {
         modules.add(BetterHudModule())
         modules.add(NoToastModule())
         modules.add(LeftStatusEffectsModule())
+        modules.add(NoFogModule())
     }
 
     fun isEnabled(name: String): Boolean {

@@ -4,6 +4,7 @@
     "plugin": "z3roco01.meowclient.mixin.MeowClientMixinPlugin",
     "compatibilityLevel": "JAVA_17",
     "client": [
+        "BackgroundRendererMixin",
         "InGameHudMixin",
         "LightmapTextureManagerMixin",
         "PlayerListHudMixin",
