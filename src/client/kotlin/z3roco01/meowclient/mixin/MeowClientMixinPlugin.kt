@@ -12,7 +12,6 @@ class MeowClientMixinPlugin : IMixinConfigPlugin {
     private val MIXIN_PACKAGE_ROOT = "z3roco01.meowclient.mixin"
 
     override fun onLoad(mixinPackage: String?) {
-        LoggerUtil.info("onload :3 ")
         MeowClient.config.load(File(MeowClientConfig.MODULE_CONFIG_PATH))
         MeowClient.modules.loadFromConfig(MeowClient.config)
     }

@@ -29,10 +29,6 @@ class MeowClientConfig {
         for(prop in getPropertiesIter())
             props.put(prop.key, bool2Str(prop.value))
 
-        LoggerUtil.info("saving")
-        for(prop in props)
-            LoggerUtil.info("${prop.key} : ${prop.value}")
-
         props.store(file.outputStream(), null)
     }
 
@@ -47,8 +43,6 @@ class MeowClientConfig {
         for(prop in props)
             this.putProperty(prop.key.toString(), str2Bool(prop.value.toString()))
 
-        for(prop in this.getPropertiesIter())
-            LoggerUtil.info("${prop.key} : ${prop.value}")
     }
 
     companion object {
@@ -65,9 +59,6 @@ class MeowClientConfig {
 
             for(prop in props)
                 config.putProperty(prop.key.toString(), str2Bool(prop.value.toString()))
-
-            for(prop in config.getPropertiesIter())
-                LoggerUtil.info("${prop.key} : ${prop.value}")
 
             return config
         }
