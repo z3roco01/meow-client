@@ -19,7 +19,7 @@ class ToggleCommand : Command("toggle") {
             .then(ClientCommandManager.argument("module", StringArgumentType.word())
                 .executes{context ->
                     val name = StringArgumentType.getString(context, "module")
-                    val moduleOpt = MeowClient.modules.moduleByName(name)
+                    val moduleOpt = MeowClient.modules.getModule(name)
 
                     if(moduleOpt.isEmpty){
                         context.source.sendError(Text.literal(name + " ").append(TextUtils.translate(".command.toggle.no_module")))

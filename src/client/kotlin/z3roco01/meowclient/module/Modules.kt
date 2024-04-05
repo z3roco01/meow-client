@@ -1,5 +1,6 @@
 package z3roco01.meowclient.module
 
+import z3roco01.meowclient.config.MeowClientConfig
 import z3roco01.meowclient.module.modules.BetterHudModule
 import z3roco01.meowclient.module.modules.FullBrightModule
 import z3roco01.meowclient.module.modules.LeftStatusEffectsModule
@@ -18,44 +19,55 @@ class Modules {
     }
 
     fun isEnabled(name: String): Boolean {
-        val module = moduleByName(name)
+        val module = getModule(name)
         if(module.isEmpty)
             return false
         return module.get().isEnabled()
     }
 
     fun isEnabled(clazz: KClass<out Module>): Boolean {
-        val module = moduleByClass(clazz)
+        val module = getModule(clazz)
         if(module.isEmpty)
             return false
         return module.get().isEnabled()
     }
 
     fun isEnabled(clazz: Class<out Module>): Boolean {
-        val module = moduleByClass(clazz)
+        val module = getModule(clazz)
         if(module.isEmpty)
             return false
         return module.get().isEnabled()
     }
 
-    fun moduleByName(name: String) : Optional<Module> {
+    fun getModule(name: String) : Optional<Module> {
         for(module in modules)
             if(module.name == name)
                 return Optional.of(module)
         return Optional.empty<Module>()
     }
 
-    fun moduleByClass(clazz: Class<out Module>): Optional<Module> {
+    fun getModule(clazz: Class<out Module>): Optional<Module> {
         for(module in modules)
             if(module::class == clazz)
                 return Optional.of(module)
         return Optional.empty<Module>()
     }
 
-    fun moduleByClass(clazz: KClass<out Module>): Optional<Module> {
+    fun getModule(clazz: KClass<out Module>): Optional<Module> {
         for(module in modules)
             if(module::class == clazz)
                 return Optional.of(module)
         return Optional.empty<Module>()
+    }
+
+    fun loadFromConfig(config: MeowClientConfig) {
+        for(prop in config.getPropertiesIter()) {
+            val moduleOpt = getModule(prop.key)
+            if(moduleOpt.isEmpty)
+                continue
+
+            val module = moduleOpt.get()
+            module.setEnabledLoading(prop.value, true)
+        }
     }
 }

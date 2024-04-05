@@ -14,7 +14,7 @@ import java.util.Optional;
 public abstract class LightmapTextureManagerMixin implements SynchronousResourceReloader,  AutoCloseable {
     @ModifyArg(method = "update", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/texture/NativeImage;setColor(III)V"), index = 2)
     private int updateSetColor(int x, int y, int color) {
-        Optional<Module> fullBrightOpt = MeowClient.INSTANCE.getModules().moduleByName("full_bright");
+        Optional<Module> fullBrightOpt = MeowClient.INSTANCE.getModules().getModule("full_bright");
         if(fullBrightOpt.isPresent() && fullBrightOpt.get().isEnabled())
             return 0xFFFFFFFF;
         else
